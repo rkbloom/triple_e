@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+
+{% block title %}Edit Profile - Triple E{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="bg-rebel-green text-white py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h1 class="text-4xl md:text-5xl font-bold mb-4">
+            Edit Your Profile
+        </h1>
+        <p class="text-xl text-white/90">
+            Keep your information up to date
+        </p>
+    </div>
+</section>
+
+<div class="section-spacing bg-gray-50">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="content-block border-l-4 border-sunset-gold">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                <div class="space-y-6">
+                    <!-- Profile Picture -->
+                    {% if user.profile_picture %}
+                        <div class="flex items-center space-x-6 pb-6 border-b border-ash-grey/20">
+                            <img src="{{ user.profile_picture.url }}" alt="Profile" class="w-24 h-24 rounded-full object-cover border-4 border-rebel-green">
+                            <div class="flex-1">
+                                <label class="block text-sm font-semibold text-earth-black mb-2">Change Profile Picture</label>
+                                {{ form.profile_picture }}
+                            </div>
+                        </div>
+                    {% else %}
+                        <div class="pb-6 border-b border-ash-grey/20">
+                            <label class="block text-sm font-semibold text-earth-black mb-2">Profile Picture</label>
+                            {{ form.profile_picture }}
+                        </div>
+                    {% endif %}
+
+                    <!-- Name Fields -->
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label for="{{ form.first_name.id_for_label }}" class="block text-sm font-semibold text-earth-black mb-2">
+                                First Name
+                            </label>
+                            {{ form.first_name }}
+                            {% if form.first_name.errors %}
+                                <p class="mt-2 text-sm text-red-600">{{ form.first_name.errors.0 }}</p>
+                            {% endif %}
+                        </div>
+                        <div>
+                            <label for="{{ form.last_name.id_for_label }}" class="block text-sm font-semibold text-earth-black mb-2">
+                                Last Name
+                            </label>
+                            {{ form.last_name }}
+                            {% if form.last_name.errors %}
+                                <p class="mt-2 text-sm text-red-600">{{ form.last_name.errors.0 }}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <!-- Email -->
+                    <div>
+                        <label for="{{ form.email.id_for_label }}" class="block text-sm font-semibold text-earth-black mb-2">
+                            Email
+                        </label>
+                        {{ form.email }}
+                        {% if form.email.errors %}
+                            <p class="mt-2 text-sm text-red-600">{{ form.email.errors.0 }}</p>
+                        {% endif %}
+                    </div>
+
+                    <!-- Bio -->
+                    <div>
+                        <label for="{{ form.bio.id_for_label }}" class="block text-sm font-semibold text-earth-black mb-2">
+                            Bio
+                        </label>
+                        {{ form.bio }}
+                        {% if form.bio.errors %}
+                            <p class="mt-2 text-sm text-red-600">{{ form.bio.errors.0 }}</p>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="mt-8 flex flex-col sm:flex-row gap-4">
+                    <button type="submit" class="btn-primary">
+                        Save Changes
+                    </button>
+                    <a href="{% url 'accounts:dashboard' %}" class="btn-outline text-center">
+                        Cancel
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% block extra_css %}
+<style>
+    input[type="text"], input[type="email"], textarea {
+        @apply w-full px-4 py-3 border-2 border-ash-grey/30 rounded-lg focus:ring-2 focus:ring-rebel-green focus:border-rebel-green transition;
+    }
+    textarea {
+        @apply min-h-[120px];
+    }
+</style>
+{% endblock %}
+{% endblock %}

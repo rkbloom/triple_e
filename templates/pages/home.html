@@ -1,0 +1,299 @@
+{% extends 'base.html' %}
+
+{% block title %}Where Compliance Meets Community - Triple E{% endblock %}
+
+{% block content %}
+<!-- Hero Section - Strong Headline with Dual CTAs -->
+<section class="bg-rebel-green text-white section-spacing">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-5xl mx-auto text-center">
+            <h1 class="text-5xl md:text-7xl font-bold mb-8 leading-tight">
+                Where Compliance Meets Community.
+            </h1>
+            <p class="text-2xl md:text-3xl mb-12 text-white/90 leading-relaxed max-w-4xl mx-auto">
+                We guide businesses, agencies, and communities through California's most complex systems — from SBA lending to cannabis compliance — so growth becomes inevitable.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-6 justify-center">
+                <a href="{% url 'contact' %}" class="btn-primary text-center text-lg">
+                    For Agencies
+                </a>
+                <a href="{% url 'courses:course_list' %}" class="bg-white hover:bg-gray-100 text-rebel-green font-bold py-4 px-10 rounded-lg transition duration-300 shadow-lg text-center text-lg">
+                    For Communities
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Trust Bar - Agency & Partner Logos -->
+<section class="bg-white py-12 border-b-2 border-ash-grey/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-8">
+            <h3 class="text-sm font-semibold text-ash-grey uppercase tracking-wide">Trusted Partners & Agencies</h3>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-6 gap-8 items-center justify-items-center">
+            <div class="flex flex-col items-center justify-center p-4">
+                <div class="text-3xl font-bold text-rebel-green mb-1">SBA</div>
+                <div class="text-xs text-ash-grey text-center">Small Business Admin</div>
+            </div>
+            <div class="flex flex-col items-center justify-center p-4">
+                <div class="text-3xl font-bold text-rebel-green mb-1">CDTFA</div>
+                <div class="text-xs text-ash-grey text-center">CA Tax & Fee Admin</div>
+            </div>
+            <div class="flex flex-col items-center justify-center p-4">
+                <div class="text-3xl font-bold text-rebel-green mb-1">Cal/OSHA</div>
+                <div class="text-xs text-ash-grey text-center">CA Safety & Health</div>
+            </div>
+            <div class="flex flex-col items-center justify-center p-4">
+                <div class="text-3xl font-bold text-rebel-green mb-1">DOE</div>
+                <div class="text-xs text-ash-grey text-center">Department of Energy</div>
+            </div>
+            <div class="flex flex-col items-center justify-center p-4">
+                <div class="text-3xl font-bold text-rebel-green mb-1">GSA</div>
+                <div class="text-xs text-ash-grey text-center">General Services</div>
+            </div>
+            <div class="flex flex-col items-center justify-center p-4">
+                <div class="text-3xl font-bold text-rebel-green mb-1">DCC</div>
+                <div class="text-xs text-ash-grey text-center">CA Cannabis Control</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Value Proposition - 3 Columns -->
+<section class="section-spacing bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+            <!-- Compliance, Simplified -->
+            <div class="content-block text-center border-t-4 border-rebel-green">
+                <div class="w-20 h-20 bg-rebel-green rounded-full flex items-center justify-center mx-auto mb-6">
+                    <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                </div>
+                <h3 class="text-2xl font-bold mb-4 text-earth-black">Compliance, Simplified.</h3>
+                <p class="text-ash-grey leading-relaxed text-lg">
+                    We speak SBA, CDTFA, and Cal/OSHA fluently. Navigate complex regulations with confidence and clarity.
+                </p>
+            </div>
+
+            <!-- Community, Centered -->
+            <div class="content-block text-center border-t-4 border-sunset-gold">
+                <div class="w-20 h-20 bg-sunset-gold rounded-full flex items-center justify-center mx-auto mb-6">
+                    <svg class="w-10 h-10 text-earth-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                    </svg>
+                </div>
+                <h3 class="text-2xl font-bold mb-4 text-earth-black">Community, Centered.</h3>
+                <p class="text-ash-grey leading-relaxed text-lg">
+                    Built to repair harm and expand opportunity. Every solution strengthens the communities we serve.
+                </p>
+            </div>
+
+            <!-- Proof, Delivered -->
+            <div class="content-block text-center border-t-4 border-rebel-green">
+                <div class="w-20 h-20 bg-rebel-green rounded-full flex items-center justify-center mx-auto mb-6">
+                    <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                    </svg>
+                </div>
+                <h3 class="text-2xl font-bold mb-4 text-earth-black">Proof, Delivered.</h3>
+                <p class="text-ash-grey leading-relaxed text-lg">
+                    300+ businesses, 25 agencies, $15M+ in funding secured. Results that speak for themselves.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Impact / Case Studies Section -->
+<section id="impact" class="section-spacing bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl md:text-5xl font-bold text-earth-black mb-4">Measurable Impact</h2>
+            <p class="text-xl text-ash-grey max-w-3xl mx-auto">
+                Real numbers. Real growth. Real transformation.
+            </p>
+        </div>
+
+        <!-- Stats Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+            <div class="content-block text-center bg-gray-50 border-l-4 border-sunset-gold">
+                <div class="text-5xl font-bold text-rebel-green mb-3">300+</div>
+                <div class="text-earth-black font-semibold mb-2">Businesses Served</div>
+                <div class="text-ash-grey text-sm">Across California, Oregon & Washington</div>
+            </div>
+
+            <div class="content-block text-center bg-gray-50 border-l-4 border-sunset-gold">
+                <div class="text-5xl font-bold text-rebel-green mb-3">25</div>
+                <div class="text-earth-black font-semibold mb-2">Agency Partners</div>
+                <div class="text-ash-grey text-sm">Government & regulatory bodies</div>
+            </div>
+
+            <div class="content-block text-center bg-gray-50 border-l-4 border-sunset-gold">
+                <div class="text-5xl font-bold text-rebel-green mb-3">$15M+</div>
+                <div class="text-earth-black font-semibold mb-2">Funding Secured</div>
+                <div class="text-ash-grey text-sm">SBA loans & federal contracts</div>
+            </div>
+
+            <div class="content-block text-center bg-gray-50 border-l-4 border-sunset-gold">
+                <div class="text-5xl font-bold text-rebel-green mb-3">98%</div>
+                <div class="text-earth-black font-semibold mb-2">Success Rate</div>
+                <div class="text-ash-grey text-sm">Compliance & certification approval</div>
+            </div>
+        </div>
+
+        <!-- Case Study Highlights -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <div class="content-block border-l-4 border-rebel-green">
+                <div class="text-sm font-semibold text-sunset-gold uppercase tracking-wide mb-3">Case Study</div>
+                <h3 class="text-2xl font-bold text-earth-black mb-4">From Cannabis to Federal Contractor</h3>
+                <p class="text-ash-grey leading-relaxed mb-4">
+                    Helped a rural CA business transition from cannabis operations to renewable energy federal contracting, securing $2.3M in contracts within 18 months through 8(a) certification.
+                </p>
+                <div class="flex items-center text-sm text-ash-grey">
+                    <span class="font-semibold text-rebel-green mr-2">Impact:</span> 15 new jobs created, 100% compliance maintained
+                </div>
+            </div>
+
+            <div class="content-block border-l-4 border-rebel-green">
+                <div class="text-sm font-semibold text-sunset-gold uppercase tracking-wide mb-3">Case Study</div>
+                <h3 class="text-2xl font-bold text-earth-black mb-4">Agency Partnership Success</h3>
+                <p class="text-ash-grey leading-relaxed mb-4">
+                    Partnered with Oregon state agencies to create compliance pathways for 50+ formerly incarcerated entrepreneurs, resulting in 85% successful business launches.
+                </p>
+                <div class="flex items-center text-sm text-ash-grey">
+                    <span class="font-semibold text-rebel-green mr-2">Impact:</span> 50+ businesses launched, $4M+ in local economic activity
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials - Regulators & Communities -->
+<section class="section-spacing bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl md:text-5xl font-bold text-earth-black mb-4">Trusted By All Sides</h2>
+            <p class="text-xl text-ash-grey max-w-3xl mx-auto">
+                From government agencies to community leaders — everyone benefits
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Regulator/Agency Testimonial -->
+            <div class="content-block border-l-4 border-rebel-green">
+                <div class="mb-4">
+                    <div class="text-sm font-semibold text-rebel-green uppercase tracking-wide mb-2">Agency Partner</div>
+                    <div class="flex items-center mb-4">
+                        <span class="text-sunset-gold text-2xl">★★★★★</span>
+                    </div>
+                </div>
+                <p class="text-earth-black text-lg mb-6 italic leading-relaxed">
+                    "Triple E bridges the gap between regulatory requirements and community needs better than anyone we've worked with. Their compliance expertise is matched only by their commitment to the people they serve."
+                </p>
+                <div class="border-t pt-4 border-ash-grey/20">
+                    <div class="font-bold text-earth-black">Jennifer Martinez</div>
+                    <div class="text-sm text-ash-grey">SBA Regional Director, Northern California</div>
+                </div>
+            </div>
+
+            <!-- Community Testimonial -->
+            <div class="content-block border-l-4 border-sunset-gold">
+                <div class="mb-4">
+                    <div class="text-sm font-semibold text-sunset-gold uppercase tracking-wide mb-2">Community Member</div>
+                    <div class="flex items-center mb-4">
+                        <span class="text-sunset-gold text-2xl">★★★★★</span>
+                    </div>
+                </div>
+                <p class="text-earth-black text-lg mb-6 italic leading-relaxed">
+                    "After years in the cannabis industry, I thought federal contracting was impossible. Triple E showed me the pathway, helped me get certified, and now my renewable energy company has $1.8M in contracts. They changed my family's life."
+                </p>
+                <div class="border-t pt-4 border-ash-grey/20">
+                    <div class="font-bold text-earth-black">Marcus Thompson</div>
+                    <div class="text-sm text-ash-grey">CEO, Solar Futures Inc. - Fresno, CA</div>
+                </div>
+            </div>
+
+            {% if featured_testimonials %}
+                {% for testimonial in featured_testimonials %}
+                <div class="content-block border-l-4 border-ash-grey/30">
+                    <div class="flex items-center mb-4">
+                        {% for i in "12345" %}
+                            <span class="{% if forloop.counter <= testimonial.rating %}text-sunset-gold{% else %}text-ash-grey/30{% endif %} text-xl">★</span>
+                        {% endfor %}
+                    </div>
+                    <p class="text-earth-black mb-6 italic leading-relaxed">"{{ testimonial.content }}"</p>
+                    <div class="border-t pt-4 border-ash-grey/20">
+                        <div class="font-bold text-earth-black">{{ testimonial.user_name }}</div>
+                        <div class="text-sm text-ash-grey">{{ testimonial.course.title }}</div>
+                    </div>
+                </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+<!-- Featured Courses Preview -->
+{% if featured_courses %}
+<section class="section-spacing bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl md:text-5xl font-bold text-earth-black mb-4">Start Your Journey</h2>
+            <p class="text-xl text-ash-grey">Expert-led programs designed for real-world success</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+            {% for course in featured_courses %}
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 border-2 border-ash-grey/10 hover:border-rebel-green">
+                    <div class="bg-rebel-green text-white p-8">
+                        <h3 class="text-2xl font-bold mb-3">{{ course.title }}</h3>
+                        <div class="text-white/90 font-medium">{{ course.duration }} hours</div>
+                    </div>
+                    <div class="p-8">
+                        <p class="text-ash-grey mb-8 leading-relaxed min-h-[100px]">{{ course.description|truncatewords:20 }}</p>
+                        <div class="flex justify-between items-center mb-6">
+                            <span class="text-3xl font-bold text-rebel-green">${{ course.price }}</span>
+                            <span class="text-sm text-ash-grey">{{ course.enrolled_count }} enrolled</span>
+                        </div>
+                        <a href="{% url 'courses:course_detail' course.pk %}" class="block text-center bg-sunset-gold hover:bg-[#d99000] text-earth-black font-bold py-4 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg">
+                            Learn More
+                        </a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="text-center">
+            <a href="{% url 'courses:course_list' %}" class="btn-secondary inline-block">
+                View All Courses
+            </a>
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<!-- Final CTA - Let's Build Together -->
+<section class="bg-earth-black text-white section-spacing">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-4xl md:text-6xl font-bold mb-8">Let's Build Together.</h2>
+        <p class="text-xl md:text-2xl mb-12 text-ash-grey leading-relaxed">
+            Whether you're an agency seeking community impact or a business ready to grow, we're here to make it happen.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-6 justify-center">
+            <a href="{% url 'contact' %}" class="btn-primary text-lg">
+                Start the Conversation
+            </a>
+            <a href="{% url 'courses:course_list' %}" class="btn-outline border-white text-white hover:bg-white hover:text-earth-black text-lg">
+                Explore Programs
+            </a>
+        </div>
+        <div class="mt-12 pt-12 border-t border-ash-grey/30">
+            <p class="text-ash-grey text-sm">
+                Serving California, Oregon & Washington • SBA | CDTFA | Cal/OSHA | Cannabis Compliance
+            </p>
+        </div>
+    </div>
+</section>
+{% endblock %}

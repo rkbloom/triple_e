@@ -1,0 +1,129 @@
+{% extends 'base.html' %}
+
+{% block title %}Testimonials - Triple E{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">Success Stories</h1>
+        <p class="text-xl text-blue-100 max-w-3xl mx-auto">
+            Hear from our community members who have transformed their lives through Triple E
+        </p>
+    </div>
+</section>
+
+<!-- Filter Section -->
+<section class="bg-white border-b">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <div class="flex gap-4">
+            <a href="{% url 'testimonials:testimonial_list' %}" class="px-6 py-2 rounded-lg font-medium transition {% if not featured_filter %}bg-blue-600 text-white{% else %}bg-gray-200 text-gray-700 hover:bg-gray-300{% endif %}">
+                All Stories
+            </a>
+            <a href="{% url 'testimonials:testimonial_list' %}?featured=true" class="px-6 py-2 rounded-lg font-medium transition {% if featured_filter == 'true' %}bg-blue-600 text-white{% else %}bg-gray-200 text-gray-700 hover:bg-gray-300{% endif %}">
+                Featured
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials Grid -->
+<section class="py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {% if page_obj %}
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {% for testimonial in page_obj %}
+                    <div class="bg-white rounded-lg shadow-lg p-6 {% if testimonial.featured %}border-2 border-yellow-400{% endif %}">
+                        {% if testimonial.featured %}
+                            <div class="inline-block bg-yellow-100 text-yellow-800 text-xs font-semibold px-3 py-1 rounded-full mb-4">
+                                Featured
+                            </div>
+                        {% endif %}
+
+                        <div class="flex items-center mb-4">
+                            {% for i in "12345" %}
+                                <span class="text-yellow-400 text-xl">{% if forloop.counter <= testimonial.rating %}★{% else %}☆{% endif %}</span>
+                            {% endfor %}
+                        </div>
+
+                        <p class="text-gray-600 mb-4 italic">"{{ testimonial.content }}"</p>
+
+                        <div class="border-t pt-4 mt-4">
+                            <div class="font-semibold text-gray-900">{{ testimonial.user_name }}</div>
+                            <div class="text-sm text-gray-500">{{ testimonial.course.title }}</div>
+                            <div class="text-xs text-gray-400 mt-1">{{ testimonial.date|date:"M d, Y" }}</div>
+                        </div>
+
+                        {% if testimonial.source == 'video' and testimonial.source_url %}
+                            <div class="mt-4">
+                                <a href="{{ testimonial.source_url }}" target="_blank" class="text-blue-600 hover:text-blue-800 text-sm font-medium">
+                                    Watch Video →
+                                </a>
+                            </div>
+                        {% elif testimonial.source == 'audio' and testimonial.source_url %}
+                            <div class="mt-4">
+                                <a href="{{ testimonial.source_url }}" target="_blank" class="text-blue-600 hover:text-blue-800 text-sm font-medium">
+                                    Listen →
+                                </a>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+
+            <!-- Pagination -->
+            {% if page_obj.has_other_pages %}
+                <div class="mt-12 flex justify-center">
+                    <nav class="inline-flex rounded-md shadow-sm -space-x-px">
+                        {% if page_obj.has_previous %}
+                            <a href="?page={{ page_obj.previous_page_number }}{% if featured_filter %}&featured={{ featured_filter }}{% endif %}" class="relative inline-flex items-center px-4 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">
+                                Previous
+                            </a>
+                        {% endif %}
+
+                        {% for num in page_obj.paginator.page_range %}
+                            {% if page_obj.number == num %}
+                                <span class="relative inline-flex items-center px-4 py-2 border border-blue-600 bg-blue-600 text-sm font-medium text-white">
+                                    {{ num }}
+                                </span>
+                            {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                                <a href="?page={{ num }}{% if featured_filter %}&featured={{ featured_filter }}{% endif %}" class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">
+                                    {{ num }}
+                                </a>
+                            {% endif %}
+                        {% endfor %}
+
+                        {% if page_obj.has_next %}
+                            <a href="?page={{ page_obj.next_page_number }}{% if featured_filter %}&featured={{ featured_filter }}{% endif %}" class="relative inline-flex items-center px-4 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">
+                                Next
+                            </a>
+                        {% endif %}
+                    </nav>
+                </div>
+            {% endif %}
+        {% else %}
+            <div class="text-center py-12">
+                <p class="text-gray-600 mb-6">No testimonials available yet.</p>
+            </div>
+        {% endif %}
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="bg-gradient-to-r from-green-600 to-green-800 text-white py-20">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Write Your Success Story?</h2>
+        <p class="text-xl mb-8 text-green-100">
+            Join our community and start your journey to economic empowerment today.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="{% url 'accounts:register' %}" class="bg-white text-green-600 hover:bg-green-50 font-semibold py-4 px-8 rounded-lg transition duration-300">
+                Get Started
+            </a>
+            <a href="{% url 'courses:course_list' %}" class="border-2 border-white text-white hover:bg-white hover:text-green-600 font-semibold py-4 px-8 rounded-lg transition duration-300">
+                View Courses
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}

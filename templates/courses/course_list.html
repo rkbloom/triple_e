@@ -1,0 +1,407 @@
+{% extends 'base.html' %}
+
+{% block title %}Courses - Triple E{% endblock %}
+
+{% block extra_css %}
+<style>
+    .audience-tab {
+        transition: all 0.3s ease;
+    }
+    .audience-tab.active {
+        background-color: #2C6E49;
+        color: white;
+        border-color: #2C6E49;
+    }
+    .sticky-cta {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 40;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Hero Banner -->
+<section class="bg-rebel-green text-white section-spacing">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h1 class="text-5xl md:text-7xl font-bold mb-8 leading-tight">
+            Training Isn't Paperwork. It's Power.
+        </h1>
+        <p class="text-2xl md:text-3xl mb-12 text-white/90 leading-relaxed max-w-4xl mx-auto">
+            Our courses give you the tools to move from policy stress to compliance confidence — whether you're running a business, leading a department, or serving your community.
+        </p>
+        <a href="#courses" class="btn-primary text-lg inline-block">
+            Enroll Now
+        </a>
+    </div>
+</section>
+
+<!-- Search Section -->
+<section class="bg-white border-b-2 border-ash-grey/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <form method="get" class="flex gap-4">
+            <div class="flex-grow">
+                <input
+                    type="text"
+                    name="search"
+                    value="{{ search_query }}"
+                    placeholder="Search courses by name or topic..."
+                    class="w-full px-6 py-4 border-2 border-ash-grey/30 rounded-lg focus:ring-2 focus:ring-rebel-green focus:border-rebel-green text-lg"
+                >
+            </div>
+            <button type="submit" class="bg-rebel-green hover:bg-[#245a3c] text-white font-semibold px-10 py-4 rounded-lg transition text-lg">
+                Search
+            </button>
+            {% if search_query %}
+                <a href="{% url 'courses:course_list' %}" class="bg-ash-grey hover:bg-earth-black text-white font-semibold px-10 py-4 rounded-lg transition text-lg">
+                    Clear
+                </a>
+            {% endif %}
+        </form>
+    </div>
+</section>
+
+<!-- Audience Tabs -->
+<section class="bg-gray-50 py-8 border-b-2 border-ash-grey/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-6">
+            <h3 class="text-sm font-semibold text-ash-grey uppercase tracking-wide mb-2">Find Your Path</h3>
+        </div>
+        <div class="flex flex-wrap justify-center gap-4">
+            <button class="audience-tab active px-8 py-4 border-2 border-ash-grey/30 rounded-lg font-semibold text-lg" data-audience="all">
+                All Courses
+            </button>
+            <button class="audience-tab px-8 py-4 border-2 border-ash-grey/30 rounded-lg font-semibold text-lg" data-audience="agencies">
+                For Agencies
+            </button>
+            <button class="audience-tab px-8 py-4 border-2 border-ash-grey/30 rounded-lg font-semibold text-lg" data-audience="businesses">
+                For Businesses
+            </button>
+            <button class="audience-tab px-8 py-4 border-2 border-ash-grey/30 rounded-lg font-semibold text-lg" data-audience="communities">
+                For Communities
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- Why Choose Us -->
+<section class="section-spacing bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl md:text-5xl font-bold text-earth-black mb-4">Why Choose Triple E Training</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+            <div class="content-block text-center border-t-4 border-rebel-green">
+                <div class="w-20 h-20 bg-rebel-green rounded-full flex items-center justify-center mx-auto mb-6">
+                    <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                    </svg>
+                </div>
+                <h3 class="text-2xl font-bold mb-4 text-earth-black">Backed by Agencies</h3>
+                <p class="text-ash-grey leading-relaxed text-lg">
+                    Developed in partnership with SBA, CDTFA, Cal/OSHA, and DCC. Curriculum validated by regulators who enforce the rules.
+                </p>
+            </div>
+
+            <div class="content-block text-center border-t-4 border-sunset-gold">
+                <div class="w-20 h-20 bg-sunset-gold rounded-full flex items-center justify-center mx-auto mb-6">
+                    <svg class="w-10 h-10 text-earth-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                    </svg>
+                </div>
+                <h3 class="text-2xl font-bold mb-4 text-earth-black">Built by Experts</h3>
+                <p class="text-ash-grey leading-relaxed text-lg">
+                    Instructors with agency experience and industry credentials. Real-world knowledge, not theoretical textbooks.
+                </p>
+            </div>
+
+            <div class="content-block text-center border-t-4 border-rebel-green">
+                <div class="w-20 h-20 bg-rebel-green rounded-full flex items-center justify-center mx-auto mb-6">
+                    <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                    </svg>
+                </div>
+                <h3 class="text-2xl font-bold mb-4 text-earth-black">Trusted by Communities</h3>
+                <p class="text-ash-grey leading-relaxed text-lg">
+                    300+ businesses trained, 98% success rate. Education that actually leads to certification and growth.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Course Catalog Grid -->
+<section id="courses" class="section-spacing bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl md:text-5xl font-bold text-earth-black mb-4">Course Catalog</h2>
+            {% if search_query %}
+                <p class="text-xl text-ash-grey">
+                    {% if page_obj.paginator.count == 1 %}
+                        Found 1 course matching "{{ search_query }}"
+                    {% else %}
+                        Found {{ page_obj.paginator.count }} courses matching "{{ search_query }}"
+                    {% endif %}
+                </p>
+            {% else %}
+                <p class="text-xl text-ash-grey">Professional training that builds real-world confidence</p>
+            {% endif %}
+        </div>
+
+        {% if page_obj %}
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {% for course in page_obj %}
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 border-2 border-ash-grey/10 hover:border-rebel-green flex flex-col">
+                        <div class="bg-rebel-green text-white p-8">
+                            <h3 class="text-2xl font-bold mb-3">{{ course.title }}</h3>
+                            <div class="flex items-center justify-between text-white/90">
+                                <span class="font-medium">{{ course.duration }} hours</span>
+                                <span class="text-sm bg-white/20 px-3 py-1 rounded-full">{{ course.enrolled_count }} enrolled</span>
+                            </div>
+                        </div>
+                        <div class="p-8 flex-grow flex flex-col">
+                            <p class="text-ash-grey mb-6 leading-relaxed flex-grow">{{ course.description|truncatewords:25 }}</p>
+                            <div class="flex justify-between items-center mb-6 pb-6 border-t pt-6">
+                                <div>
+                                    <div class="text-sm text-ash-grey mb-1">Investment</div>
+                                    <span class="text-3xl font-bold text-rebel-green">${{ course.price }}</span>
+                                </div>
+                                <div class="text-right">
+                                    <div class="text-xs text-ash-grey mb-1">Group discounts available</div>
+                                    <div class="text-xs text-sunset-gold font-semibold">POs accepted</div>
+                                </div>
+                            </div>
+                            <a href="{% url 'courses:course_detail' course.pk %}" class="block text-center bg-sunset-gold hover:bg-[#d99000] text-earth-black font-bold py-4 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg">
+                                View Course Details
+                            </a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+            <!-- Pagination -->
+            {% if page_obj.has_other_pages %}
+                <div class="mt-16 flex justify-center">
+                    <nav class="inline-flex rounded-lg shadow-sm -space-x-px overflow-hidden">
+                        {% if page_obj.has_previous %}
+                            <a href="?page={{ page_obj.previous_page_number }}{% if search_query %}&search={{ search_query }}{% endif %}" class="relative inline-flex items-center px-6 py-3 bg-white border border-ash-grey/30 text-ash-grey hover:bg-gray-50 font-medium">
+                                Previous
+                            </a>
+                        {% endif %}
+
+                        {% for num in page_obj.paginator.page_range %}
+                            {% if page_obj.number == num %}
+                                <span class="relative inline-flex items-center px-6 py-3 bg-rebel-green border border-rebel-green text-white font-bold">
+                                    {{ num }}
+                                </span>
+                            {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                                <a href="?page={{ num }}{% if search_query %}&search={{ search_query }}{% endif %}" class="relative inline-flex items-center px-6 py-3 bg-white border border-ash-grey/30 text-ash-grey hover:bg-gray-50 font-medium">
+                                    {{ num }}
+                                </a>
+                            {% endif %}
+                        {% endfor %}
+
+                        {% if page_obj.has_next %}
+                            <a href="?page={{ page_obj.next_page_number }}{% if search_query %}&search={{ search_query }}{% endif %}" class="relative inline-flex items-center px-6 py-3 bg-white border border-ash-grey/30 text-ash-grey hover:bg-gray-50 font-medium">
+                                Next
+                            </a>
+                        {% endif %}
+                    </nav>
+                </div>
+            {% endif %}
+        {% else %}
+            <div class="text-center py-12">
+                <p class="text-ash-grey text-xl mb-6">No courses found matching your search.</p>
+                <a href="{% url 'courses:course_list' %}" class="btn-primary inline-block">
+                    View All Courses
+                </a>
+            </div>
+        {% endif %}
+    </div>
+</section>
+
+<!-- Instructor Highlights -->
+<section class="section-spacing bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl md:text-5xl font-bold text-earth-black mb-4">Learn From The Best</h2>
+            <p class="text-xl text-ash-grey">Agency veterans teaching what they know best</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+            <div class="content-block text-center">
+                <div class="w-32 h-32 bg-rebel-green/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <svg class="w-16 h-16 text-rebel-green" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold text-earth-black mb-2">Dr. Sarah Chen</h3>
+                <div class="text-sm text-sunset-gold font-semibold mb-4">SBA Compliance Expert</div>
+                <p class="text-ash-grey text-sm leading-relaxed">
+                    Former SBA Regional Administrator. PhD Public Policy. 15+ years guiding businesses through federal certification.
+                </p>
+            </div>
+
+            <div class="content-block text-center">
+                <div class="w-32 h-32 bg-sunset-gold/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <svg class="w-16 h-16 text-sunset-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold text-earth-black mb-2">Patricia Kim, CPA</h3>
+                <div class="text-sm text-sunset-gold font-semibold mb-4">Tax & Cannabis Specialist</div>
+                <p class="text-ash-grey text-sm leading-relaxed">
+                    Former CDTFA Senior Analyst. Cal/OSHA consultant. Cannabis industry compliance expert teaching regulatory navigation.
+                </p>
+            </div>
+
+            <div class="content-block text-center">
+                <div class="w-32 h-32 bg-rebel-green/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <svg class="w-16 h-16 text-rebel-green" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold text-earth-black mb-2">James Rodriguez</h3>
+                <div class="text-sm text-sunset-gold font-semibold mb-4">Community Equity Lead</div>
+                <p class="text-ash-grey text-sm leading-relaxed">
+                    10 years workforce development. Formerly incarcerated reentry specialist. Teaching equity-centered business practices.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials / Success Stories -->
+<section class="section-spacing bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl md:text-5xl font-bold text-earth-black mb-4">What Students Say</h2>
+            <p class="text-xl text-ash-grey">Real results from business owners and agency staff</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="content-block border-l-4 border-sunset-gold">
+                <div class="mb-4">
+                    <div class="text-sm font-semibold text-sunset-gold uppercase tracking-wide mb-2">Business Owner</div>
+                    <div class="flex items-center mb-4">
+                        <span class="text-sunset-gold text-2xl">★★★★★</span>
+                    </div>
+                </div>
+                <p class="text-earth-black text-lg mb-6 italic leading-relaxed">
+                    "The SBA course didn't just teach me the forms — it gave me the confidence to actually apply. Got my 8(a) certification 3 months later and won my first federal contract within the year. Worth every penny."
+                </p>
+                <div class="border-t pt-4 border-ash-grey/20">
+                    <div class="font-bold text-earth-black">Carlos Mendez</div>
+                    <div class="text-sm text-ash-grey">Owner, Mendez Construction - Bakersfield, CA</div>
+                </div>
+            </div>
+
+            <div class="content-block border-l-4 border-rebel-green">
+                <div class="mb-4">
+                    <div class="text-sm font-semibold text-rebel-green uppercase tracking-wide mb-2">Agency Staff</div>
+                    <div class="flex items-center mb-4">
+                        <span class="text-sunset-gold text-2xl">★★★★★</span>
+                    </div>
+                </div>
+                <p class="text-earth-black text-lg mb-6 italic leading-relaxed">
+                    "We sent 12 staff through the Community Equity Training. It transformed how we think about policy implementation. Now we're partnering with Triple E on all our workforce programs."
+                </p>
+                <div class="border-t pt-4 border-ash-grey/20">
+                    <div class="font-bold text-earth-black">Maria Santos</div>
+                    <div class="text-sm text-ash-grey">Program Director, Oregon Workforce Alliance</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Pricing / Enrollment Options -->
+<section class="section-spacing bg-white">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl md:text-5xl font-bold text-earth-black mb-4">Transparent Pricing</h2>
+            <p class="text-xl text-ash-grey">Flexible options for individuals, teams, and agencies</p>
+        </div>
+
+        <div class="content-block bg-gray-50">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                <div class="text-center">
+                    <div class="text-sm text-ash-grey mb-2">Individual Enrollment</div>
+                    <div class="text-3xl font-bold text-rebel-green mb-2">List Price</div>
+                    <div class="text-ash-grey">Per course, lifetime access</div>
+                </div>
+                <div class="text-center border-l-2 border-r-2 border-ash-grey/20">
+                    <div class="text-sm text-ash-grey mb-2">Group Discount</div>
+                    <div class="text-3xl font-bold text-sunset-gold mb-2">15-25% Off</div>
+                    <div class="text-ash-grey">5+ participants</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-sm text-ash-grey mb-2">Agency Partnerships</div>
+                    <div class="text-3xl font-bold text-rebel-green mb-2">Custom</div>
+                    <div class="text-ash-grey">Purchase orders accepted</div>
+                </div>
+            </div>
+
+            <div class="border-t border-ash-grey/20 pt-8">
+                <h4 class="font-bold text-earth-black mb-4 text-center">What's Included:</h4>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="flex items-start">
+                        <span class="text-rebel-green mr-2 text-xl">✓</span>
+                        <span class="text-ash-grey">Lifetime course access</span>
+                    </div>
+                    <div class="flex items-start">
+                        <span class="text-rebel-green mr-2 text-xl">✓</span>
+                        <span class="text-ash-grey">Downloadable resources & templates</span>
+                    </div>
+                    <div class="flex items-start">
+                        <span class="text-rebel-green mr-2 text-xl">✓</span>
+                        <span class="text-ash-grey">Certificate of completion</span>
+                    </div>
+                    <div class="flex items-start">
+                        <span class="text-rebel-green mr-2 text-xl">✓</span>
+                        <span class="text-ash-grey">Instructor Q&A support</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- Final CTA -->
+<section class="bg-earth-black text-white section-spacing">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-4xl md:text-6xl font-bold mb-8">Ready to Build Compliance Confidence?</h2>
+        <p class="text-xl md:text-2xl mb-12 text-ash-grey leading-relaxed">
+            Choose a course and start your journey from policy stress to certification success.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-6 justify-center">
+            <a href="#courses" class="btn-primary text-lg">
+                Browse Courses
+            </a>
+            <a href="{% url 'contact' %}" class="btn-outline border-white text-white hover:bg-white hover:text-earth-black text-lg">
+                Request Group Quote
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Sticky Enroll CTA -->
+<a href="#courses" class="sticky-cta bg-sunset-gold hover:bg-[#d99000] text-earth-black font-bold py-4 px-8 rounded-full shadow-2xl transition-all duration-300 hover:scale-110">
+    Enroll Now
+</a>
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+// Audience tab filtering (visual only - could be enhanced with actual filtering)
+document.querySelectorAll('.audience-tab').forEach(tab => {
+    tab.addEventListener('click', function() {
+        document.querySelectorAll('.audience-tab').forEach(t => t.classList.remove('active'));
+        this.classList.add('active');
+        // Add filtering logic here if needed
+    });
+});
+</script>
+{% endblock %}

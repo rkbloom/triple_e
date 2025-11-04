@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% block title %}Login - Triple E{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="bg-rebel-green text-white py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h1 class="text-4xl md:text-5xl font-bold mb-4">
+            Welcome Back
+        </h1>
+        <p class="text-xl text-white/90">
+            Sign in to access your courses and continue your learning journey
+        </p>
+    </div>
+</section>
+
+<div class="section-spacing bg-gray-50">
+    <div class="max-w-md mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="content-block border-l-4 border-rebel-green">
+            <h2 class="text-3xl font-bold text-earth-black mb-2 text-center">
+                Sign In
+            </h2>
+            <p class="text-center text-ash-grey mb-8">
+                Don't have an account?
+                <a href="{% url 'accounts:register' %}" class="font-semibold text-sunset-gold hover:text-rebel-green transition">
+                    Create one here
+                </a>
+            </p>
+
+            <form class="space-y-6" method="post">
+                {% csrf_token %}
+                <div>
+                    <label for="{{ form.username.id_for_label }}" class="block text-sm font-semibold text-earth-black mb-2">
+                        Username
+                    </label>
+                    {{ form.username }}
+                    {% if form.username.errors %}
+                        <p class="mt-2 text-sm text-red-600">{{ form.username.errors.0 }}</p>
+                    {% endif %}
+                </div>
+                <div>
+                    <label for="{{ form.password.id_for_label }}" class="block text-sm font-semibold text-earth-black mb-2">
+                        Password
+                    </label>
+                    {{ form.password }}
+                    {% if form.password.errors %}
+                        <p class="mt-2 text-sm text-red-600">{{ form.password.errors.0 }}</p>
+                    {% endif %}
+                </div>
+
+                {% if form.non_field_errors %}
+                    <div class="rounded-md bg-red-50 p-4 border-l-4 border-red-600">
+                        <p class="text-sm text-red-800">{{ form.non_field_errors.0 }}</p>
+                    </div>
+                {% endif %}
+
+                <div>
+                    <button type="submit" class="w-full btn-primary">
+                        Sign In
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% block extra_css %}
+<style>
+    input[type="text"], input[type="password"] {
+        @apply w-full px-4 py-3 border-2 border-ash-grey/30 rounded-lg focus:ring-2 focus:ring-rebel-green focus:border-rebel-green transition;
+    }
+</style>
+{% endblock %}
+{% endblock %}

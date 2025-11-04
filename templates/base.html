@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Triple E - Empowering Communities{% endblock %}</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'earth-black': '#0E0E0E',
+                        'rebel-green': '#2C6E49',
+                        'sunset-gold': '#F4A300',
+                        'ash-grey': '#8D8D8D',
+                        'freedom-white': '#FFFFFF',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom CSS -->
+    <style>
+        /* Custom styling for trust-first, conversion-driven design */
+        .btn-primary {
+            @apply bg-[#F4A300] hover:bg-[#d99000] text-[#0E0E0E] font-bold py-3 px-8 rounded-lg transition duration-300 ease-in-out transform hover:scale-105 shadow-lg;
+        }
+        .btn-secondary {
+            @apply bg-[#2C6E49] hover:bg-[#245a3c] text-white font-semibold py-3 px-8 rounded-lg transition duration-300 ease-in-out transform hover:scale-105;
+        }
+        .btn-outline {
+            @apply border-2 border-[#2C6E49] text-[#2C6E49] hover:bg-[#2C6E49] hover:text-white font-semibold py-3 px-8 rounded-lg transition duration-300;
+        }
+        .section-spacing {
+            @apply py-20;
+        }
+        .content-block {
+            @apply bg-white rounded-lg shadow-lg p-8;
+        }
+        /* Scroll offset for anchor links to account for sticky header */
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 100px;
+        }
+    </style>
+
+    {% block extra_css %}{% endblock %}
+</head>
+<body class="bg-[#FFFFFF] min-h-screen flex flex-col text-[#0E0E0E]">
+    <!-- Sticky Navigation -->
+    <nav class="sticky top-0 z-50 bg-white shadow-lg border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <a href="{% url 'home' %}" class="text-3xl font-bold text-rebel-green">Triple E</a>
+                    </div>
+                    <div class="hidden md:ml-10 md:flex md:space-x-8">
+                        <a href="{% url 'about' %}" class="border-transparent text-earth-black hover:text-rebel-green hover:border-rebel-green inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition">
+                            About
+                        </a>
+                        <a href="{% url 'courses:course_list' %}" class="border-transparent text-earth-black hover:text-rebel-green hover:border-rebel-green inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition">
+                            Courses
+                        </a>
+                        <a href="{% url 'home' %}#impact" class="border-transparent text-earth-black hover:text-rebel-green hover:border-rebel-green inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition">
+                            Impact
+                        </a>
+                        <a href="{% url 'faq' %}" class="border-transparent text-earth-black hover:text-rebel-green hover:border-rebel-green inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition">
+                            FAQ
+                        </a>
+                        <a href="{% url 'contact' %}" class="border-transparent text-earth-black hover:text-rebel-green hover:border-rebel-green inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition">
+                            Contact
+                        </a>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <!-- Sticky CTA: Partner With Us -->
+                    <a href="{% url 'contact' %}" class="hidden sm:inline-block bg-sunset-gold hover:bg-[#d99000] text-earth-black font-bold py-3 px-8 rounded-lg transition duration-300 shadow-lg">
+                        Partner With Us
+                    </a>
+                    {% if user.is_authenticated %}
+                        <a href="{% url 'accounts:dashboard' %}" class="text-ash-grey hover:text-rebel-green font-medium transition">
+                            Dashboard
+                        </a>
+                        <a href="{% url 'accounts:logout' %}" class="text-ash-grey hover:text-earth-black font-medium transition">
+                            Logout
+                        </a>
+                    {% else %}
+                        <a href="{% url 'accounts:login' %}" class="text-ash-grey hover:text-rebel-green font-medium transition">
+                            Login
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Messages -->
+    {% if messages %}
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-4">
+            {% for message in messages %}
+                <div class="rounded-md p-4 mb-4 {% if message.tags == 'error' %}bg-red-50 text-red-800{% elif message.tags == 'success' %}bg-green-50 text-green-800{% elif message.tags == 'warning' %}bg-yellow-50 text-yellow-800{% else %}bg-blue-50 text-blue-800{% endif %}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <!-- Main Content -->
+    <main class="flex-grow">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-earth-black text-freedom-white mt-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4 text-sunset-gold">Triple E</h3>
+                    <p class="text-ash-grey leading-relaxed">Empowering communities through education and economic opportunity.</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4 text-freedom-white">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="{% url 'home' %}" class="text-ash-grey hover:text-sunset-gold transition">Home</a></li>
+                        <li><a href="{% url 'about' %}" class="text-ash-grey hover:text-sunset-gold transition">About</a></li>
+                        <li><a href="{% url 'courses:course_list' %}" class="text-ash-grey hover:text-sunset-gold transition">Courses</a></li>
+                        <li><a href="{% url 'faq' %}" class="text-ash-grey hover:text-sunset-gold transition">FAQ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4 text-freedom-white">Programs</h4>
+                    <ul class="space-y-3">
+                        <li><a href="{% url 'courses:course_list' %}" class="text-ash-grey hover:text-sunset-gold transition">8(a) Certification</a></li>
+                        <li><a href="{% url 'courses:course_list' %}" class="text-ash-grey hover:text-sunset-gold transition">Federal Contracting</a></li>
+                        <li><a href="{% url 'courses:course_list' %}" class="text-ash-grey hover:text-sunset-gold transition">Renewable Energy</a></li>
+                        <li><a href="{% url 'courses:course_list' %}" class="text-ash-grey hover:text-sunset-gold transition">Community Programs</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4 text-freedom-white">Contact</h4>
+                    <ul class="space-y-3 text-ash-grey">
+                        <li>California-Oregon-Washington Corridor</li>
+                        <li><a href="{% url 'contact' %}" class="hover:text-sunset-gold transition">Send us a message</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-ash-grey mt-12 pt-8 text-center text-ash-grey">
+                <p>&copy; 2025 Triple E. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

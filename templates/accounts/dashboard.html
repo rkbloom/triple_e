@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard - Triple E{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="bg-rebel-green text-white py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h1 class="text-4xl md:text-5xl font-bold mb-4">Welcome, {{ user.first_name|default:user.username }}!</h1>
+        <p class="text-xl text-white/90">Track your progress and manage your learning journey</p>
+    </div>
+</section>
+
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 bg-gray-50">
+    <!-- User Stats -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+        <div class="content-block border-l-4 border-rebel-green text-center">
+            <div class="text-sm font-bold text-ash-grey uppercase tracking-wide mb-2">Enrolled Courses</div>
+            <div class="text-4xl font-bold text-sunset-gold">{{ enrolled_courses.count }}</div>
+        </div>
+        <div class="content-block border-l-4 border-sunset-gold text-center">
+            <div class="text-sm font-bold text-ash-grey uppercase tracking-wide mb-2">Profile Status</div>
+            <div class="text-2xl font-bold text-rebel-green">Active</div>
+        </div>
+        <div class="content-block border-l-4 border-rebel-green text-center">
+            <div class="text-sm font-bold text-ash-grey uppercase tracking-wide mb-2">Member Since</div>
+            <div class="text-2xl font-bold text-earth-black">{{ user.created_at|date:"M Y" }}</div>
+        </div>
+    </div>
+
+    <!-- My Courses -->
+    <div class="content-block border-l-4 border-rebel-green mb-8">
+        <h2 class="text-3xl font-bold text-earth-black mb-6">My Enrolled Courses</h2>
+        {% if enrolled_courses %}
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {% for course in enrolled_courses %}
+                    <div class="bg-gray-50 border-2 border-ash-grey/20 rounded-lg p-6 hover:shadow-lg hover:border-rebel-green transition-all duration-300">
+                        <h3 class="text-xl font-bold text-earth-black mb-3">{{ course.title }}</h3>
+                        <p class="text-ash-grey text-sm mb-4 leading-relaxed">{{ course.description|truncatewords:20 }}</p>
+                        <div class="flex justify-between items-center pt-4 border-t border-ash-grey/20">
+                            <span class="text-sm text-ash-grey font-semibold">{{ course.duration }} hours</span>
+                            <a href="{% url 'courses:course_detail' course.pk %}" class="text-sunset-gold hover:text-rebel-green font-semibold transition">
+                                View Course →
+                            </a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="text-center py-12 bg-gray-50 rounded-lg">
+                <svg class="w-20 h-20 text-ash-grey mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                </svg>
+                <p class="text-ash-grey text-lg mb-6">You haven't enrolled in any courses yet.</p>
+                <a href="{% url 'courses:course_list' %}" class="btn-primary inline-block">
+                    Browse Courses
+                </a>
+            </div>
+        {% endif %}
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="content-block border-l-4 border-sunset-gold hover:shadow-2xl transition-all duration-300">
+            <div class="w-16 h-16 bg-sunset-gold rounded-full flex items-center justify-center mb-4">
+                <svg class="w-8 h-8 text-earth-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                </svg>
+            </div>
+            <h3 class="text-2xl font-bold text-earth-black mb-2">Update Your Profile</h3>
+            <p class="text-ash-grey mb-6 leading-relaxed">Keep your information up to date and personalize your experience</p>
+            <a href="{% url 'accounts:profile' %}" class="btn-outline">
+                Edit Profile
+            </a>
+        </div>
+        <div class="content-block border-l-4 border-rebel-green hover:shadow-2xl transition-all duration-300">
+            <div class="w-16 h-16 bg-rebel-green rounded-full flex items-center justify-center mb-4">
+                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                </svg>
+            </div>
+            <h3 class="text-2xl font-bold text-earth-black mb-2">Explore More Courses</h3>
+            <p class="text-ash-grey mb-6 leading-relaxed">Find courses that match your goals and expand your skills</p>
+            <a href="{% url 'courses:course_list' %}" class="btn-secondary">
+                View All Courses
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}
