@@ -1,9 +1,16 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Triple E - Empowering Communities{% endblock %}</title>
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'images/favicon_32.png' %}">
+    <link rel="icon" type="image/png" sizes="192x192" href="{% static 'images/favicon_192.png' %}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'images/favicon_180.png' %}">
+    <link rel="icon" href="{% static 'images/favicon.ico' %}">
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -58,7 +65,9 @@
             <div class="flex justify-between h-20">
                 <div class="flex items-center">
                     <div class="flex-shrink-0">
-                        <a href="{% url 'home' %}" class="text-3xl font-bold text-rebel-green">Triple E</a>
+                        <a href="{% url 'home' %}" class="flex items-center">
+                            <img src="{% static 'images/logo_stacked_color_on_white.png' %}" alt="Economic Evolution Enterprise" class="h-16 w-auto">
+                        </a>
                     </div>
                     <!-- Desktop Menu -->
                     <div class="hidden md:ml-10 md:flex md:space-x-8">
@@ -162,7 +171,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
                 <div>
-                    <h3 class="text-2xl font-bold mb-4 text-sunset-gold">Triple E</h3>
+                    <img src="{% static 'images/logo_stacked_white.png' %}" alt="Economic Evolution Enterprise" class="h-20 w-auto mb-4">
                     <p class="text-ash-grey leading-relaxed">Empowering communities through education and economic opportunity.</p>
                 </div>
                 <div>

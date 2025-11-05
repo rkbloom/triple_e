@@ -41,7 +41,7 @@
         {% if faqs %}
             <div class="space-y-4">
                 {% for faq in faqs %}
-                    <div class="content-block border-l-4 border-rebel-green">
+                    <div class="content-block border-l-4 border-rebel-green pl-6">
                         <button class="faq-question w-full text-left flex justify-between items-center hover:bg-gray-50 transition p-2 -m-2 rounded" onclick="toggleFAQ({{ forloop.counter }})">
                             <h3 class="text-xl font-bold text-earth-black pr-8">{{ faq.question }}</h3>
                             <svg class="faq-icon w-8 h-8 text-sunset-gold flex-shrink-0" id="icon-{{ forloop.counter }}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -58,10 +58,7 @@
             </div>
         {% else %}
             <div class="content-block text-center">
-                <p class="text-ash-grey text-xl mb-6">No FAQs available at this time. Please check back soon or contact us directly.</p>
-                <a href="{% url 'contact' %}" class="btn-primary inline-block">
-                    Contact Us
-                </a>
+                <p class="text-ash-grey text-xl mb-6">No FAQs available at this time. Please check back soon.</p>
             </div>
         {% endif %}
     </div>
@@ -74,11 +71,11 @@
         <p class="text-xl text-ash-grey mb-8 leading-relaxed">
             We're here to help! Reach out to our team for personalized assistance with compliance, training, or partnership opportunities.
         </p>
-        <div class="flex flex-col sm:flex-row gap-6 justify-center">
-            <a href="{% url 'contact' %}" class="btn-primary text-lg">
+        <div class="flex flex-col sm:flex-row gap-6 justify-center mb-8">
+            <a href="{% url 'contact' %}" class="bg-white hover:bg-gray-100 text-rebel-green font-bold py-4 px-10 rounded-lg transition duration-300 shadow-lg text-lg">
                 Contact Us
             </a>
-            <a href="{% url 'courses:course_list' %}" class="btn-secondary text-lg">
+            <a href="{% url 'courses:course_list' %}" class="bg-white hover:bg-gray-100 text-rebel-green font-bold py-4 px-10 rounded-lg transition duration-300 shadow-lg text-lg">
                 View Our Courses
             </a>
         </div>
@@ -93,7 +90,7 @@
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="content-block text-center border-t-4 border-rebel-green hover:shadow-2xl transition-all duration-300">
+            <div class="content-block text-center border-t-4 border-rebel-green hover:shadow-2xl transition-all duration-300 pt-8">
                 <div class="w-20 h-20 bg-rebel-green rounded-full flex items-center justify-center mx-auto mb-6">
                     <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
@@ -103,12 +100,12 @@
                 <p class="text-ash-grey leading-relaxed mb-6">
                     Explore our comprehensive training programs for agencies, businesses, and communities.
                 </p>
-                <a href="{% url 'courses:course_list' %}" class="text-sunset-gold font-semibold hover:text-rebel-green transition">
+                <a href="{% url 'courses:course_list' %}" class="text-sunset-gold font-semibold hover:text-passion-red transition">
                     Browse Courses →
                 </a>
             </div>
 
-            <div class="content-block text-center border-t-4 border-sunset-gold hover:shadow-2xl transition-all duration-300">
+            <div class="content-block text-center border-t-4 border-sunset-gold hover:shadow-2xl transition-all duration-300 pt-8">
                 <div class="w-20 h-20 bg-sunset-gold rounded-full flex items-center justify-center mx-auto mb-6">
                     <svg class="w-10 h-10 text-earth-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -118,12 +115,12 @@
                 <p class="text-ash-grey leading-relaxed mb-6">
                     Learn about our mission, team, and partnerships with agencies and communities.
                 </p>
-                <a href="{% url 'about' %}" class="text-sunset-gold font-semibold hover:text-rebel-green transition">
+                <a href="{% url 'about' %}" class="text-sunset-gold font-semibold hover:text-passion-red transition">
                     Our Story →
                 </a>
             </div>
 
-            <div class="content-block text-center border-t-4 border-rebel-green hover:shadow-2xl transition-all duration-300">
+            <div class="content-block text-center border-t-4 border-rebel-green hover:shadow-2xl transition-all duration-300 pt-8">
                 <div class="w-20 h-20 bg-rebel-green rounded-full flex items-center justify-center mx-auto mb-6">
                     <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
@@ -133,7 +130,7 @@
                 <p class="text-ash-grey leading-relaxed mb-6">
                     Interested in collaboration? Let's discuss how we can work together.
                 </p>
-                <a href="{% url 'contact' %}" class="text-sunset-gold font-semibold hover:text-rebel-green transition">
+                <a href="{% url 'contact' %}" class="text-sunset-gold font-semibold hover:text-passion-red transition">
                     Get In Touch →
                 </a>
             </div>
@@ -149,10 +146,10 @@
             Whether you're seeking training, partnership opportunities, or compliance guidance, we're here to help.
         </p>
         <div class="flex flex-col sm:flex-row gap-6 justify-center">
-            <a href="{% url 'courses:course_list' %}" class="btn-primary text-lg">
+            <a href="{% url 'courses:course_list' %}" class="bg-white hover:bg-gray-100 text-rebel-green font-bold py-4 px-10 rounded-lg transition duration-300 shadow-lg text-lg">
                 Explore Courses
             </a>
-            <a href="{% url 'contact' %}" class="btn-outline border-white text-white hover:bg-white hover:text-earth-black text-lg">
+            <a href="{% url 'contact' %}" class="bg-white hover:bg-gray-100 text-rebel-green font-bold py-4 px-10 rounded-lg transition duration-300 shadow-lg text-lg">
                 Contact Us
             </a>
         </div>
