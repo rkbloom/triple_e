@@ -1,17 +1,17 @@
 # Triple E - Educational Empowerment Platform
 
-A comprehensive Django-based educational platform designed to empower War on Drugs impacted communities through federal contracting and renewable energy training programs.
+A comprehensive Django-based educational platform designed to empower War on Drugs impacted communities through federal contracting and cannabis compliance training programs.
 
 ## Project Overview
 
 **Project Name:** Triple E
-**Purpose:** High-converting website for economically distressed communities, with a focus on federal contracting (8(a) certification) and renewable energy career transitions.
+**Purpose:** High-converting website for economically distressed communities, with a focus on federal contracting (8(a) certification) and cannabis compliance.
 
 **Target Users:**
 - Rural Communities in economically distressed areas
 - Community-Based Organizations serving formerly incarcerated populations
 - Entrepreneurs pursuing 8(a) certification
-- Cannabis Industry Workers transitioning to renewable energy
+- Cannabis Industry Workers transitioning to federal contracting
 
 **Geographic Focus:** California-Oregon-Washington corridor
 
