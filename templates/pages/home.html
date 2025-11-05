@@ -13,8 +13,8 @@
             <p class="text-2xl md:text-3xl mb-12 text-white/90 leading-relaxed max-w-4xl mx-auto">
                 We guide businesses, agencies, and communities through California's most complex systems — from SBA lending to cannabis compliance — so growth becomes inevitable.
             </p>
-            <div class="flex flex-col sm:flex-row gap-6 justify-center">
-                <a href="{% url 'contact' %}" class="btn-primary text-center text-lg">
+            <div class="flex flex-col sm:flex-row gap-6 justify-center pb-8">
+                <a href="{% url 'contact' %}" class="bg-white hover:bg-gray-100 text-rebel-green font-bold py-4 px-10 rounded-lg transition duration-300 shadow-lg text-center text-lg">
                     For Agencies
                 </a>
                 <a href="{% url 'courses:course_list' %}" class="bg-white hover:bg-gray-100 text-rebel-green font-bold py-4 px-10 rounded-lg transition duration-300 shadow-lg text-center text-lg">
@@ -31,7 +31,7 @@
         <div class="text-center mb-8">
             <h3 class="text-sm font-semibold text-ash-grey uppercase tracking-wide">Trusted Partners & Agencies</h3>
         </div>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 items-center justify-items-center">
+        <div class="grid grid-cols-2 md:grid-cols-5 gap-8 items-center justify-items-center">
             <div class="flex flex-col items-center justify-center p-4">
                 <div class="text-3xl font-bold text-rebel-green mb-1">SBA</div>
                 <div class="text-xs text-ash-grey text-center">Small Business Admin</div>
@@ -39,6 +39,10 @@
             <div class="flex flex-col items-center justify-center p-4">
                 <div class="text-3xl font-bold text-rebel-green mb-1">CDTFA</div>
                 <div class="text-xs text-ash-grey text-center">CA Tax & Fee Admin</div>
+            </div>
+            <div class="flex flex-col items-center justify-center p-4">
+                <div class="text-3xl font-bold text-rebel-green mb-1">DFW</div>
+                <div class="text-xs text-ash-grey text-center">CA Fish & Wildlife</div>
             </div>
             <div class="flex flex-col items-center justify-center p-4">
                 <div class="text-3xl font-bold text-rebel-green mb-1">GSA</div>
@@ -91,7 +95,7 @@
                 </div>
                 <h3 class="text-2xl font-bold mb-4 text-earth-black">Proof, Delivered.</h3>
                 <p class="text-ash-grey leading-relaxed text-lg">
-                    300+ businesses, 25 agencies, $15M+ in funding secured. Results that speak for themselves.
+                    25 businesses, 6 agencies, $15M+ in funding secured. Results that speak for themselves.
                 </p>
             </div>
         </div>
@@ -111,13 +115,13 @@
         <!-- Stats Grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
             <div class="content-block text-center bg-gray-50 border-l-4 border-sunset-gold">
-                <div class="text-5xl font-bold text-rebel-green mb-3">300+</div>
+                <div class="text-5xl font-bold text-rebel-green mb-3">25</div>
                 <div class="text-earth-black font-semibold mb-2">Businesses Served</div>
                 <div class="text-ash-grey text-sm">Across California, Oregon & Washington</div>
             </div>
 
             <div class="content-block text-center bg-gray-50 border-l-4 border-sunset-gold">
-                <div class="text-5xl font-bold text-rebel-green mb-3">25</div>
+                <div class="text-5xl font-bold text-rebel-green mb-3">6</div>
                 <div class="text-earth-black font-semibold mb-2">Agency Partners</div>
                 <div class="text-ash-grey text-sm">Government & regulatory bodies</div>
             </div>
@@ -283,7 +287,7 @@
         </div>
         <div class="mt-12 pt-12 border-t border-ash-grey/30">
             <p class="text-ash-grey text-sm">
-                Serving California, Oregon & Washington • SBA | CDTFA | Cannabis Compliance
+                Serving California, Oregon & Washington • SBA | CDTFA | DFW | Cannabis Compliance
             </p>
         </div>
     </div>

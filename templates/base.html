@@ -17,6 +17,7 @@
                         'sunset-gold': '#F4A300',
                         'ash-grey': '#8D8D8D',
                         'freedom-white': '#FFFFFF',
+                        'passion-red': '#D7263D',
                     }
                 }
             }
@@ -59,42 +60,83 @@
                     <div class="flex-shrink-0">
                         <a href="{% url 'home' %}" class="text-3xl font-bold text-rebel-green">Triple E</a>
                     </div>
+                    <!-- Desktop Menu -->
                     <div class="hidden md:ml-10 md:flex md:space-x-8">
-                        <a href="{% url 'about' %}" class="border-transparent text-earth-black hover:text-rebel-green hover:border-rebel-green inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition">
+                        <a href="{% url 'about' %}" class="border-transparent text-earth-black hover:text-passion-red hover:border-passion-red inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition">
                             About
                         </a>
-                        <a href="{% url 'courses:course_list' %}" class="border-transparent text-earth-black hover:text-rebel-green hover:border-rebel-green inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition">
+                        <a href="{% url 'courses:course_list' %}" class="border-transparent text-earth-black hover:text-passion-red hover:border-passion-red inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition">
                             Courses
                         </a>
-                        <a href="{% url 'home' %}#impact" class="border-transparent text-earth-black hover:text-rebel-green hover:border-rebel-green inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition">
-                            Impact
-                        </a>
-                        <a href="{% url 'faq' %}" class="border-transparent text-earth-black hover:text-rebel-green hover:border-rebel-green inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition">
+                        <a href="{% url 'faq' %}" class="border-transparent text-earth-black hover:text-passion-red hover:border-passion-red inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition">
                             FAQ
                         </a>
-                        <a href="{% url 'contact' %}" class="border-transparent text-earth-black hover:text-rebel-green hover:border-rebel-green inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition">
+                        <a href="{% url 'contact' %}" class="border-transparent text-earth-black hover:text-passion-red hover:border-passion-red inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition">
                             Contact
                         </a>
                     </div>
                 </div>
                 <div class="flex items-center space-x-4">
                     <!-- Sticky CTA: Partner With Us -->
-                    <a href="{% url 'contact' %}" class="hidden sm:inline-block bg-sunset-gold hover:bg-[#d99000] text-earth-black font-bold py-3 px-8 rounded-lg transition duration-300 shadow-lg">
+                    <a href="{% url 'contact' %}" class="hidden lg:inline-block bg-sunset-gold hover:bg-[#d99000] text-earth-black font-bold py-3 px-8 rounded-lg transition duration-300 shadow-lg">
                         Partner With Us
                     </a>
-                    {% if user.is_authenticated %}
-                        <a href="{% url 'accounts:dashboard' %}" class="text-ash-grey hover:text-rebel-green font-medium transition">
-                            Dashboard
-                        </a>
-                        <a href="{% url 'accounts:logout' %}" class="text-ash-grey hover:text-earth-black font-medium transition">
-                            Logout
-                        </a>
-                    {% else %}
-                        <a href="{% url 'accounts:login' %}" class="text-ash-grey hover:text-rebel-green font-medium transition">
-                            Login
-                        </a>
-                    {% endif %}
+                    <!-- Desktop Auth Links -->
+                    <div class="hidden md:flex md:items-center md:space-x-4">
+                        {% if user.is_authenticated %}
+                            <a href="{% url 'accounts:dashboard' %}" class="text-ash-grey hover:text-passion-red font-medium transition">
+                                Dashboard
+                            </a>
+                            <a href="{% url 'accounts:logout' %}" class="text-ash-grey hover:text-passion-red font-medium transition">
+                                Logout
+                            </a>
+                        {% else %}
+                            <a href="{% url 'accounts:login' %}" class="text-ash-grey hover:text-passion-red font-medium transition">
+                                Login
+                            </a>
+                        {% endif %}
+                    </div>
+                    <!-- Mobile Menu Button -->
+                    <button id="mobile-menu-button" class="md:hidden inline-flex items-center justify-center p-2 rounded-md text-earth-black hover:text-passion-red hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-passion-red transition">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                            <path id="close-icon" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                        </svg>
+                    </button>
                 </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden border-t border-gray-100">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="{% url 'about' %}" class="block px-3 py-2 rounded-md text-base font-medium text-earth-black hover:text-passion-red hover:bg-gray-50 transition">
+                    About
+                </a>
+                <a href="{% url 'courses:course_list' %}" class="block px-3 py-2 rounded-md text-base font-medium text-earth-black hover:text-passion-red hover:bg-gray-50 transition">
+                    Courses
+                </a>
+                <a href="{% url 'faq' %}" class="block px-3 py-2 rounded-md text-base font-medium text-earth-black hover:text-passion-red hover:bg-gray-50 transition">
+                    FAQ
+                </a>
+                <a href="{% url 'contact' %}" class="block px-3 py-2 rounded-md text-base font-medium text-earth-black hover:text-passion-red hover:bg-gray-50 transition">
+                    Contact
+                </a>
+                <div class="border-t border-passion-red/20 my-2"></div>
+                {% if user.is_authenticated %}
+                    <a href="{% url 'accounts:dashboard' %}" class="block px-3 py-2 rounded-md text-base font-medium text-ash-grey hover:text-passion-red hover:bg-gray-50 transition">
+                        Dashboard
+                    </a>
+                    <a href="{% url 'accounts:logout' %}" class="block px-3 py-2 rounded-md text-base font-medium text-ash-grey hover:text-passion-red hover:bg-gray-50 transition">
+                        Logout
+                    </a>
+                {% else %}
+                    <a href="{% url 'accounts:login' %}" class="block px-3 py-2 rounded-md text-base font-medium text-ash-grey hover:text-passion-red hover:bg-gray-50 transition">
+                        Login
+                    </a>
+                {% endif %}
+                <a href="{% url 'contact' %}" class="block mx-3 mt-4 mb-2 px-4 py-3 bg-sunset-gold hover:bg-[#d99000] text-earth-black font-bold rounded-lg transition text-center">
+                    Partner With Us
+                </a>
             </div>
         </div>
     </nav>
@@ -126,26 +168,26 @@
                 <div>
                     <h4 class="text-lg font-semibold mb-4 text-freedom-white">Quick Links</h4>
                     <ul class="space-y-3">
-                        <li><a href="{% url 'home' %}" class="text-ash-grey hover:text-sunset-gold transition">Home</a></li>
-                        <li><a href="{% url 'about' %}" class="text-ash-grey hover:text-sunset-gold transition">About</a></li>
-                        <li><a href="{% url 'courses:course_list' %}" class="text-ash-grey hover:text-sunset-gold transition">Courses</a></li>
-                        <li><a href="{% url 'faq' %}" class="text-ash-grey hover:text-sunset-gold transition">FAQ</a></li>
+                        <li><a href="{% url 'home' %}" class="text-ash-grey hover:text-passion-red transition">Home</a></li>
+                        <li><a href="{% url 'about' %}" class="text-ash-grey hover:text-passion-red transition">About</a></li>
+                        <li><a href="{% url 'courses:course_list' %}" class="text-ash-grey hover:text-passion-red transition">Courses</a></li>
+                        <li><a href="{% url 'faq' %}" class="text-ash-grey hover:text-passion-red transition">FAQ</a></li>
                     </ul>
                 </div>
                 <div>
                     <h4 class="text-lg font-semibold mb-4 text-freedom-white">Programs</h4>
                     <ul class="space-y-3">
-                        <li><a href="{% url 'courses:course_list' %}" class="text-ash-grey hover:text-sunset-gold transition">8(a) Certification</a></li>
-                        <li><a href="{% url 'courses:course_list' %}" class="text-ash-grey hover:text-sunset-gold transition">Federal Contracting</a></li>
-                        <li><a href="{% url 'courses:course_list' %}" class="text-ash-grey hover:text-sunset-gold transition">Cannabis Compliance</a></li>
-                        <li><a href="{% url 'courses:course_list' %}" class="text-ash-grey hover:text-sunset-gold transition">Community Programs</a></li>
+                        <li><a href="{% url 'courses:course_list' %}" class="text-ash-grey hover:text-passion-red transition">8(a) Certification</a></li>
+                        <li><a href="{% url 'courses:course_list' %}" class="text-ash-grey hover:text-passion-red transition">Federal Contracting</a></li>
+                        <li><a href="{% url 'courses:course_list' %}" class="text-ash-grey hover:text-passion-red transition">Cannabis Compliance</a></li>
+                        <li><a href="{% url 'courses:course_list' %}" class="text-ash-grey hover:text-passion-red transition">Community Programs</a></li>
                     </ul>
                 </div>
                 <div>
                     <h4 class="text-lg font-semibold mb-4 text-freedom-white">Contact</h4>
                     <ul class="space-y-3 text-ash-grey">
                         <li>California-Oregon-Washington Corridor</li>
-                        <li><a href="{% url 'contact' %}" class="hover:text-sunset-gold transition">Send us a message</a></li>
+                        <li><a href="{% url 'contact' %}" class="hover:text-passion-red transition">Send us a message</a></li>
                     </ul>
                 </div>
             </div>
@@ -154,6 +196,35 @@
             </div>
         </div>
     </footer>
+
+    <!-- Mobile Menu Toggle Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuIcon = document.getElementById('menu-icon');
+            const closeIcon = document.getElementById('close-icon');
+
+            mobileMenuButton.addEventListener('click', function() {
+                // Toggle mobile menu visibility
+                mobileMenu.classList.toggle('hidden');
+
+                // Toggle between hamburger and X icon
+                menuIcon.classList.toggle('hidden');
+                closeIcon.classList.toggle('hidden');
+            });
+
+            // Close mobile menu when clicking on a link
+            const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+            mobileMenuLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    mobileMenu.classList.add('hidden');
+                    menuIcon.classList.remove('hidden');
+                    closeIcon.classList.add('hidden');
+                });
+            });
+        });
+    </script>
 
     {% block extra_js %}{% endblock %}
 </body>
